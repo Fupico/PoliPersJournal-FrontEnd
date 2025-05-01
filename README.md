@@ -1,41 +1,103 @@
-# PoliPersJournal (polipersjournal)
+# Poli Pers Journal
 
-Poli Pers Journal
+Poli Pers Journal, özgür yazılım ve açık kaynak felsefesini benimseyen, çok dilli bir dergi/blog platformudur. Akademik, sosyolojik, politik ve bireysel içeriklerin yayınlandığı bu platform, bireylerin bilgiye adil erişimini ve katılımcı bir içerik ekosistemini hedefler.
 
-## Install the dependencies
+> ✨ “Kodun özgür olduğu bir dünyada fikirler daha çok yaşar.”
+
+## [Canlı Projeye Git](https://test.polipersjournal.com/)
+
+---
+
+## ⚛️ Özellikler
+
+- ✨ Quasar UI (Vue 3 + Composition API) ile geliştirilmiş
+- 🌐 Çok dilli altyapı (TR, EN, DE...)
+- 🤝 SSR/PWA desteği
+- 🧰 Tip güvenli TypeScript + Pinia store yapısı
+- ⚖️ API tabanlı, backend ile kolay entegrasyon
+- 📲 Mobil uyumlu responsive tasarım
+- ⚛️ SEO dostu sayfa yapıları
+
+---
+
+## 🚀 Kurulum
+
+### 1. Bağımlılıkları yükleyin
 
 ```bash
 yarn
-# or
+# veya
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### 2. Geliştirme Ortamını Başlatın
 
 ```bash
 quasar dev
 ```
 
-### Build the pwa app for production
+> ⚠️ Bu komut sizde çalışmıyorsa [Quasar CLI Yükleme Kılavuzu](https://quasar.dev/start/quasar-cli) sayfasından Quasar CLI kurulumu yapmanız gerekir.
+
+### 3. Üretim modunda PWA derlemesi
 
 ```bash
 quasar build -m pwa
 ```
 
-### Customize the configuration
+---
 
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+## 📂 Klasör Yapısı
+
+```bash
+src/
+├── assets/                # Görseller, ikonlar
+├── boot/                  # axios, i18n gibi tanımlamalar
+├── components/            # Vue bileşenleri
+├── i18n/                  # Dil dosyaları
+├── layouts/               # Sayfa şablonları
+├── pages/                 # Sayfa içerikleri (Kategori, Makale, Hakkımızda...)
+├── router/                # Vue router tanımlamaları
+├── stores/                # Pinia store yapısı
+└── App.vue                # Ana bileşen
+```
 
 ---
 
-What would you like to build? » App with Quasar CLI, let's go!
-√ Project folder: ... quasar-project
-√ Pick Quasar version: » Quasar v2 (Vue 3 | latest and greatest)
-√ Pick script type: » Typescript
-√ Pick Quasar App CLI variant: » Quasar App CLI with Vite 6 (v2)
-√ Package name: ... polipersjournal
-√ Project product name: (must start with letter if building mobile apps) ... PoliPersJournal
-√ Project description: ... Poli Pers Journal
-√ Pick a Vue component style: » Composition API with <script setup>
-√ Pick your CSS preprocessor: » Sass with SCSS syntax
-√ Check the features needed for your project: » State Management (Pinia), axios, vue-i18n
+## 📚 Kullanılan Teknolojiler
+
+| Teknoloji  | Amaç / Kapsam                |
+| ---------- | ---------------------------- |
+| Vue 3      | Composition API + TypeScript |
+| Quasar     | UI Framework                 |
+| Pinia      | State yönetimi               |
+| Axios      | API bağlantıları             |
+| vue-i18n   | Dil çeviri altyapısı         |
+| TypeScript | Tip güvenli geliştirme       |
+
+---
+
+## 👥 Geliştirici Notları
+
+- Bu proje bir **Özgür Yazılım** projesidir ve açık kaynaklıdır.
+- Özgür yazılım felsefesine uygun şekilde geliştirilmekte ve kamuya fayda sağlaması hedeflenmektedir.
+- [Özgür yazılım nedir?](ozgur-yazilim-nedir.md)
+
+---
+
+## 🚪 Lisans
+
+Bu proje **GNU GENERAL PUBLIC LICENSE v3.0** ile lisanslanmıştır. Detaylı bilgi için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
+
+> ✅ Kod üzerinde değişiklik yapabilir, paylaşabilir ve yeni üretimlerde kullanabilirsiniz ancak aynı lisansla açık tutma zorunluluğu vardır.
+
+---
+
+## 📨 İletişim
+
+**Devrim Mehmet Pattabanoğlu**  
+✉️ devrimmehmet@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/devrim-mehmet-pattabanoglu/)
+
+**Şule Celep**  
+✉️ ssulecelepp@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/sulecelep/)
