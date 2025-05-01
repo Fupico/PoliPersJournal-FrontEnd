@@ -1,0 +1,19 @@
+{
+  "extends": "./.quasar/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "types": ["quasar"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "#q-app/*": [".quasar/*"], // ✅ DOĞRU: .quasar klasörünü göstermeli
+      "#components/*": ["src/components/*"],
+      "#layouts/*": ["src/layouts/*"],
+      "#pages/*": ["src/pages/*"],
+      "#assets/*": ["src/assets/*"],
+      "#boot/*": ["src/boot/*"],
+      "#stores/*": ["src/stores/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "vite.config.ts"]
+}
