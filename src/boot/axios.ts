@@ -11,8 +11,8 @@ declare module "@vue/runtime-core" {
 
 // 📌 API yapılandırması
 const api = axios.create({
- // baseURL: "https://api.polipersjournal.com/api", // 🌍 Backend API adresini buraya yaz
-  baseURL: "https://localhost:1923/api", // 🌍 Backend API adresini buraya yaz
+  baseURL: "https://api.polipersjournal.com/api", // 🌍 Backend API adresini buraya yaz
+  //baseURL: "https://localhost:1923/api", // 🌍 Backend API adresini buraya yaz
   timeout: 10000, // ⏳ 10 saniye içinde yanıt dönmezse hata ver
   headers: {
     "Content-Type": "application/json",
