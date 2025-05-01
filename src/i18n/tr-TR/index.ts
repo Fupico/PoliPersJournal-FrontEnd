@@ -1,7 +1,7 @@
 export default {
-  failed: 'İşlem başarısız oldu',
-  success: 'İşlem başarılı',
-   latestArticles: "Son Makaleler",
+  failed: "İşlem başarısız oldu",
+  success: "İşlem başarılı",
+  latestArticles: "Son Makaleler",
   viewAll: "Tümünü Görüntüle",
   articles: [
     {
@@ -146,7 +146,7 @@ export default {
     },
   ],
 
-    sidebarMenu: {
+  sidebarMenu: {
     home: "Anasayfa",
     about: "Hakkımızda",
     submitArticle: "Makale Gönder",
@@ -154,6 +154,7 @@ export default {
     categories: "Kategoriler",
     contact: "İletişim",
     profile: "Profilim",
+    login: "Giriş Yap",
   },
 
   contact: {
@@ -177,9 +178,9 @@ export default {
     cancel: "İptal",
     send: "Gönder",
     fillAllFields: "Lütfen tüm alanları doldurun.",
-    messageSent: "Mesajınız başarıyla gönderildi!"
-  }
-,categories: {
+    messageSent: "Mesajınız başarıyla gönderildi!",
+  },
+  categories: {
     title: "Tüm Kategoriler",
     subtitle: "Farklı konuları ve makaleleri keşfedin",
     latestArticles: "Son Makaleler",
@@ -194,17 +195,22 @@ export default {
     business: "İş Dünyası",
     businessDesc: "İş dünyasındaki trendler ve stratejiler",
     education: "Eğitim",
-    educationDesc: "Öğrenme ve bilgi kaynakları"
-  }, about: {
+    educationDesc: "Öğrenme ve bilgi kaynakları",
+  },
+  about: {
     title: "Hakkımızda",
-    subtitle: "Şirketimiz, misyonumuz ve vizyonumuz hakkında daha fazla bilgi edinin.",
+    subtitle:
+      "Şirketimiz, misyonumuz ve vizyonumuz hakkında daha fazla bilgi edinin.",
     companyTitle: "Şirketimiz",
-    companyDesc: "Sektörde lider, yenilik ve mükemmeliyete adanmış bir şirketiz.",
+    companyDesc:
+      "Sektörde lider, yenilik ve mükemmeliyete adanmış bir şirketiz.",
     missionTitle: "Misyonumuz",
-    missionDesc: "İnsanların hayatında fark yaratan yüksek kaliteli çözümler sunmak.",
+    missionDesc:
+      "İnsanların hayatında fark yaratan yüksek kaliteli çözümler sunmak.",
     visionTitle: "Vizyonumuz",
-    visionDesc: "Yenilik ve müşteri memnuniyeti ile küresel çapta tanınan bir marka olmak.",
-    contactUs: "Bize Ulaşın"
+    visionDesc:
+      "Yenilik ve müşteri memnuniyeti ile küresel çapta tanınan bir marka olmak.",
+    contactUs: "Bize Ulaşın",
   },
   articlecontext: {
     title: "Metaverse Çağında Adil Sanal Rehabilitasyon için Bir Çerçeve",
@@ -212,7 +218,8 @@ export default {
     authors: "Mireia Vera, David L. Lubell",
     category: "Teknoloji ve Sağlık",
     tags: ["Metaverse", "Rehabilitasyon", "Yapay Zeka", "Sanal Gerçeklik"],
-    content: "<p>Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...</p>",
+    content:
+      "<p>Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...Metaverse teknolojileri, sağlık hizmetlerine erişimi artırabilir...</p>",
     readTime: "Tahmini Okuma Süresi",
     views: "Görüntüleme",
     download: "İndir",
@@ -225,10 +232,7 @@ export default {
     relatedArticles: [
       { id: 1, title: "Sağlıkta Sanal Gerçeklik", slug: "vr-healthcare" },
       { id: 2, title: "Yapay Zeka ile Tıbbi Teşhis", slug: "ai-medical" },
-      { id: 3, title: "Tele-tıbbın Geleceği", slug: "telemedicine-future" }
-    ]
-  }
-
-
-
+      { id: 3, title: "Tele-tıbbın Geleceği", slug: "telemedicine-future" },
+    ],
+  },
 };

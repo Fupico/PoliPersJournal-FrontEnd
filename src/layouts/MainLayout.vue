@@ -96,6 +96,11 @@
           <q-item-section avatar><q-icon name="email" /></q-item-section>
           <q-item-section>{{ t("sidebarMenu.contact") }}</q-item-section>
         </q-item>
+
+        <q-item clickable v-ripple to="/login">
+          <q-item-section avatar><q-icon name="login" /></q-item-section>
+          <q-item-section>{{ t("sidebarMenu.login") }}</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 

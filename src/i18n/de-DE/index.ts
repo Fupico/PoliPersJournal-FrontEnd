@@ -155,6 +155,7 @@ export default {
     categories: "Kategorien",
     contact: "Kontakt",
     profile: "Mein Profil",
+    login:'Einloggen',
   },
 
   contact: {

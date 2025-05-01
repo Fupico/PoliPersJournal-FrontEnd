@@ -157,6 +157,7 @@ export default {
     categories: "Categories",
     contact: "Contact",
     profile: "My Profile",
+    login:'Login',
   },
 
   contact: {

@@ -48,6 +48,21 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: "", component: () => import("@/pages/ArticlePage.vue") }],
     props: true, // ✅ Slug'ı bileşene props olarak geç
   },
+  {
+    path: "/login",
+    component: () => import("@/layouts/EmptyLayout.vue"),
+    children: [{ path: "", component: () => import("@/pages/LoginPage.vue") }],
+  },
+  {
+    path: "/register",
+    component: () => import("@/layouts/EmptyLayout.vue"),
+    children: [{ path: "", component: () => import("@/pages/RegisterPage.vue") }],
+  },
+  {
+    path: "/admin-about",
+    component: () => import("@/layouts/AdminLayout.vue"),
+    children: [{ path: "", component: () => import("@/pages/admin/AboutPage.vue") }],
+  },
 {
   path: "/author/:profileLink", // 🔥 Tekil yazar sayfası için doğru path
   component: () => import("@/layouts/MainLayout.vue"),
