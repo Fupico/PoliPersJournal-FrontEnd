@@ -14,14 +14,136 @@
 
               <br />
 
-              <q-form @submit="onLogin" class="q-gutter-xs">
-                <br />
+              <q-tabs
+                v-model="loginMethod"
+                class="text-indigo-8"
+                active-color="indigo-8"
+                indicator-color="indigo-8"
+                align="justify"
+              >
+                <q-tab name="username" label="Kullanıcı Adı" />
+                <q-tab name="phone" label="Telefon" />
+                <q-tab name="email" label="E-Mail" />
+              </q-tabs>
 
-                <!-- <div
-                    class="text-h6 text-weight-bolder text-center mb-3 text-grey-10"
+              <q-tab-panels
+                class="bg-transparent"
+                v-model="loginMethod"
+                animated
+              >
+                <q-tab-panel class="bg-transparent" name="username">
+                  <q-form
+                    @submit="onLogin('userName')"
+                    class="q-gutter-md q-mt-md"
                   >
-                    Kullanıcı Girişi
-                  </div> -->
+                    <q-input
+                      v-model="dataItem.userName"
+                      label="Kullanıcı Adı"
+                    />
+                    <q-input
+                      :type="isPwd ? 'password' : 'text'"
+                      v-model="dataItem.password"
+                      label="Şifre"
+                    >
+                      <template v-slot:append>
+                        <q-icon
+                          :name="isPwd ? 'visibility_off' : 'visibility'"
+                          class="cursor-pointer"
+                          @click="isPwd = !isPwd"
+                        />
+                      </template>
+                    </q-input>
+                    <div class="row justify-center">
+                      <q-btn
+                        type="submit"
+                        label="Giriş"
+                        color="indigo-8"
+                        class="q-px-md"
+                        no-caps
+                      />
+                    </div>
+                  </q-form>
+                </q-tab-panel>
+
+                <q-tab-panel name="phone">
+                  <q-form
+                    @submit="onLogin('phoneNumber')"
+                    class="q-gutter-md q-mt-md"
+                  >
+                    <q-input
+                      v-model="dataItem.phoneNumber"
+                      label="Telefon Numarası"
+                      mask="+90 (###) ### ## ##"
+                    />
+                    <q-input
+                      :type="isPwd ? 'password' : 'text'"
+                      v-model="dataItem.password"
+                      label="Şifre"
+                    >
+                      <template v-slot:append>
+                        <q-icon
+                          :name="isPwd ? 'visibility_off' : 'visibility'"
+                          class="cursor-pointer"
+                          @click="isPwd = !isPwd"
+                        />
+                      </template>
+                    </q-input>
+                    <div class="row justify-center">
+                      <q-btn
+                        type="submit"
+                        label="Giriş"
+                        color="indigo-8"
+                        class="q-px-md"
+                        no-caps
+                      />
+                    </div>
+                  </q-form>
+                </q-tab-panel>
+
+                <q-tab-panel name="email">
+                  <q-form
+                    @submit="onLogin('email')"
+                    class="q-gutter-md q-mt-md"
+                  >
+                    <q-input
+                      v-model="dataItem.email"
+                      label="E-Mail"
+                      type="email"
+                    />
+                    <q-input
+                      :type="isPwd ? 'password' : 'text'"
+                      v-model="dataItem.password"
+                      label="Şifre"
+                    >
+                      <template v-slot:append>
+                        <q-icon
+                          :name="isPwd ? 'visibility_off' : 'visibility'"
+                          class="cursor-pointer"
+                          @click="isPwd = !isPwd"
+                        />
+                      </template>
+                    </q-input>
+                    <div class="row justify-center">
+                      <q-btn
+                        type="submit"
+                        label="Giriş"
+                        color="indigo-8"
+                        class="q-px-md"
+                        no-caps
+                      />
+                    </div>
+                  </q-form>
+                </q-tab-panel>
+              </q-tab-panels>
+              <div class="row justify-center items-end q-ma-md">
+                <b
+                  style="cursor: pointer; color: black"
+                  @click="router.push('/register')"
+                  >Kayıt Ol</b
+                >
+              </div>
+              <!-- <q-form @submit="onLogin" class="q-gutter-xs">
+                <br />
 
                 <q-input
                   v-model="dataItem.userName"
@@ -41,9 +163,7 @@
                   </template>
                 </q-input>
 
-                <!-- <div class="row justify-end items-start q-pa-sm">
-                    <b style="cursor: pointer; color: black">Şifremi Unuttum</b>
-                  </div> -->
+               
                 <br />
                 <div class="row justify-center items-end">
                   <q-btn
@@ -61,7 +181,7 @@
                     >Kayıt Ol</b
                   >
                 </div>
-              </q-form>
+              </q-form> -->
             </q-card-section>
 
             <div class="row items-end justify-between q-gutter-md q-pa-md">
@@ -88,34 +208,56 @@ import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { useAuthStore } from "src/stores/authServiceStore";
-import LoginRequest from "src/models/Auth/Login/LoginRequest";
+import { LoginRequest } from "src/models/Auth/Login";
 const authStore = useAuthStore();
 const { responseData, login, isLoading, errorMessage } = authStore;
-const $q= useQuasar();
+const $q = useQuasar();
 const router = useRouter();
 const isPwd = ref(true);
 const dataItem = ref<LoginRequest>({
   userName: null,
   password: null,
-  //phoneNumber: null,
-  //email: null,
+  phoneNumber: null,
+  email: null,
 });
+const loginMethod = ref("username"); // Default login method
+const onLogin = async (loginType: string) => {
+  if (loginType == "userName") {
+    dataItem.value.phoneNumber = null;
+    dataItem.value.email = null;
+  } else if (loginType == "phoneNumber") {
+    dataItem.value.userName = null;
+    dataItem.value.email = null;
+  } else if (loginType == "email") {
+    dataItem.value.userName = null;
+    dataItem.value.phoneNumber = null;
+  }
+  await authStore.login(dataItem.value);
 
-const onLogin = async () => {
-  let result = await authStore.login(dataItem.value);
-    console.log("result", result);
   console.log("responseData", authStore.responseData);
-  if(authStore.responseData != null) {
-    console.log("result", result);
-    if (authStore.responseData.success) {
+  if (authStore.responseData != null) {
+    if (authStore.responseData.success === true) {
+      $q.notify({
+        message: "Giriş İşlemi Başarılı",
+        type: "positive",
+        icon: "check_circle",
+      });
       router.push("/");
     } else {
       console.log("errorMessage", authStore.errorMessage);
-      //$q.notify({ message: errorMessage, color: "red" });
+      $q.notify({
+        message: authStore.errorMessage || "Hata Oluştu",
+        type: "negative",
+        icon: "error",
+      });
     }
   } else {
     console.log("errorMessage", authStore.errorMessage);
-    //$q.notify({ message: errorMessage, color: "red" });
+    $q.notify({
+      message: authStore.errorMessage || "Hata Oluştu",
+      type: "negative",
+      icon: "error",
+    });
   }
 };
 </script>
@@ -154,8 +296,12 @@ const onLogin = async () => {
   /* background-color:transparent; */
   /* border-bottom: 11px solid #FFCB00;*/
 }
-
-
+:deep(.no-pointer-events) {
+  padding: 8px;
+}
+:deep(.q-field__native) {
+  padding: 6px 6px;
+}
 @media (max-width: 580px) {
   .login-card {
     margin: 0 10px 0 10px;
