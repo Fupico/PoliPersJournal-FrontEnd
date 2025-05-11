@@ -46,19 +46,19 @@ import { ref, computed, onMounted } from "vue";
 import { useTokenStore } from "@/stores/tokenStore";
 import EssentialLink, {
   type EssentialLinkProps,
-} from "components/EssentialLink.vue";
+} from "src/components/EssentialLink.vue";
 
 const tokenStore = useTokenStore();
 onMounted(() => {
   // Burada gerekli başlangıç işlemlerini yapabilirsiniz.
   // Örneğin, kullanıcı rolünü bir API'den alabilirsiniz.
   const token = localStorage.getItem("token");
-  tokenStore.setToken(token);
-  console.log("Token setToken() çağrıldı");
-  console.log(tokenStore.email);
-  console.log(tokenStore.role);
+  tokenStore.setToken(token ?? "");
+  //console.log("Token setToken() çağrıldı");
+  //console.log(tokenStore.email);
+  //console.log(tokenStore.role);
   userRole.value = tokenStore.role; // Kullanıcı rolünü token'dan alıyoruz.
-  console.log(userRole.value);
+  //console.log(userRole.value);
 });
 // Kullanıcı rolü
 const userRole = ref<String>("Admin"); // Örneğin, "admin", "teacher", "guardian" gibi değerler alabilir.
@@ -70,18 +70,18 @@ const allLinks: EssentialLinkProps[] = [
     link: "/admin-about",
     roles: ["Admin"],
   },
-//   {
-//     title: "Atölyeler",
-//     icon: "person",
-//     link: "/workshop",
-//     roles: ["Admin", "User"],
-//   },
-//   {
-//     title: "Deneme",
-//     icon: "person",
-//     link: "/test",
-//     roles: ["User"],
-//   },
+  //   {
+  //     title: "Atölyeler",
+  //     icon: "person",
+  //     link: "/workshop",
+  //     roles: ["Admin", "User"],
+  //   },
+  //   {
+  //     title: "Deneme",
+  //     icon: "person",
+  //     link: "/test",
+  //     roles: ["User"],
+  //   },
 ];
 
 // Kullanıcının rolüne göre filtrelenmiş menü
