@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 function parseJwt(token: string) {
-    console.log('token', token)
+    //console.log('token', token)
   try {
     const base64Url: any = token.split(".")[1];
     const base64: string = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -35,10 +35,10 @@ export const useTokenStore = defineStore("tokenStore", {
 
   actions: {
     setToken(token: string) {
-        console.log('token', token)
+        //console.log('token', token)
         this.token = token
         this.decoded = parseJwt(token)
-        console.log('Decoded inside store:', this.decoded)
+        //console.log('Decoded inside store:', this.decoded)
       },
     clearToken() {
       this.token = "";

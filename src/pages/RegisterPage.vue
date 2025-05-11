@@ -8,29 +8,53 @@
               <br />
 
               <div class="text-h4 text-bold text-center mb-3 text-indigo-8">
-                Kullanıcı Giriş
+                Kullanıcı Kayıt
               </div>
               <hr />
 
               <br />
 
-              <q-form @submit="onLogin" class="q-gutter-xs">
+              <q-form @submit="onRegister" class="q-gutter-xs">
                 <br />
-
-                <!-- <div
-                    class="text-h6 text-weight-bolder text-center mb-3 text-grey-10"
-                  >
-                    Kullanıcı Girişi
-                  </div> -->
+                <q-input
+                  dense
+                  v-model="dataItem.name"
+                  label="Ad"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
+                ></q-input>
 
                 <q-input
-                  v-model="dataItem.username"
-                  label="Kullanıcı Adı"
+                  dense
+                  v-model="dataItem.surname"
+                  label="Soyad"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
                 ></q-input>
                 <q-input
+                  dense
+                  v-model="dataItem.email"
+                  label="E-posta"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
+                ></q-input>
+                <q-input
+                  dense
+                  v-model="dataItem.phoneNumber"
+                  label="Telefon Numarası"
+                  mask="+90 (###) ### ## ##"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
+                ></q-input>
+
+                <q-input
+                  dense
+                  v-model="dataItem.userName"
+                  label="Kullanıcı Adı"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
+                ></q-input>
+                <q-input
+                dense
                   :type="isPwd ? 'password' : 'text'"
                   v-model="dataItem.password"
                   :label="'Şifre'"
+                  :rules="[(val) => !!val || 'Bu alan zorunludur']"
                 >
                   <template v-slot:append>
                     <q-icon
@@ -49,7 +73,7 @@
                   <q-btn
                     no-caps
                     class="q-pa"
-                    :label="'Giriş'"
+                    :label="'Kayıt Ol'"
                     type="submit"
                     color="indigo-8"
                   ></q-btn>
@@ -57,8 +81,8 @@
                 <div class="row justify-center items-end q-ma-md">
                   <b
                     style="cursor: pointer; color: black"
-                    @click="router.push('/register')"
-                    >Kayıt Ol</b
+                    @click="router.push('/login')"
+                    >Giriş Yap</b
                   >
                 </div>
               </q-form>
@@ -87,22 +111,39 @@
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-//import {authStore} from "src/stores/authServiceStore";
-import RegisterRequest from "src/models/Auth/Register/RegisterRequest";
-//const {responseData, register, isLoading, errorMessage} = authStore();
+import { useAuthStore } from "src/stores/authServiceStore";
+import { RegisterRequest } from "src/models/Auth/Register";
+const authStore = useAuthStore();
+const { responseData, register, isLoading, errorMessage } = authStore;
+const $q= useQuasar();
 const router = useRouter();
 const isPwd = ref(true);
 const dataItem = ref<RegisterRequest>({
   name: null,
   surname: null,
-  username: null,
+  userName: null,
   password: null,
   email: null,
+  phoneNumber: null,
 });
 
-const onLogin = async () => {
-  //let result = await register(dataItem.value);
-  console.log("result", result);
+const onRegister = async () => {
+  await register(dataItem.value);
+  console.log("responseData", authStore.responseData);
+  if(responseData.success===true){
+    $q.notify({
+      type: "positive",
+      message: responseData.message,
+      icon: "check_circle",
+    });
+    router.push("/login");
+  }else{
+    $q.notify({
+      type: "negative",
+      message: authStore.errorMessage,
+      icon: "error"
+    });
+  }
 };
 </script>
 
@@ -140,7 +181,12 @@ const onLogin = async () => {
   /* background-color:transparent; */
   /* border-bottom: 11px solid #FFCB00;*/
 }
-
+:deep(.no-pointer-events) {
+  padding: 8px;
+}
+:deep(.q-field__native) {
+  padding: 6px 6px;
+}
 @media (max-width: 580px) {
   .login-card {
     margin: 0 10px 0 10px;

@@ -24,8 +24,10 @@ export const useAuthStore = defineStore("authStore", () => {
      
       // Burada token'ı localStorage'a kaydedilecek
       // buradan roller çekilecek
-    } catch (error) {
-      errorMessage.value = "Giriş yaparken hata oluştu.";
+    } catch (error: any) {
+      console.log('response error', error)
+      responseData.value = null;
+      errorMessage.value = error.response.data.message;
       console.error("Error fetching login", error);
     } finally {
       isLoading.value = false;
@@ -36,10 +38,11 @@ export const useAuthStore = defineStore("authStore", () => {
     isLoading.value = true;
     errorMessage.value = "";
     try {
-      const response = await api.post(`/register` + data);
+      const response = await api.post(`Auth/register` , data);
       responseData.value = response.data;
-    } catch (error) {
-      errorMessage.value = "Kayıt olurken hata oluştu.";
+    } catch (error:any) {
+      responseData.value = null;
+      errorMessage.value = error.response.data.message;
       console.error("Error fetching register", error);
     } finally {
       isLoading.value = false;
