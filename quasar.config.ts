@@ -66,7 +66,7 @@ css: ['/app.scss'],
         iconSet: 'fontawesome-v6',
       config: {},
 
-      plugins: []
+      plugins: ['Notify']
     },
 
     animations: [],
