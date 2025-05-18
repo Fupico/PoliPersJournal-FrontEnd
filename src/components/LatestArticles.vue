@@ -6,7 +6,7 @@
       </p>
       <q-btn
         flat
-        to="/all-articles"
+        to="/categories"
         class="text-body1 q-pa-sm rounded bordered-button"
       >
         {{ t("article.viewAll") }}

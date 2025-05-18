@@ -3,18 +3,29 @@
     <q-card class="about-card">
       <!-- Başlık Bölümü -->
       <q-card-section class="text-center header-section">
-        <q-icon name="info" size="50px" color="primary" />
+        <!-- 🖼️ Logo Resmi -->
+        <q-img
+          src="/images/logo.jpg"
+          style="max-width: 400px; margin: 0 auto"
+          contain
+        />
+
+        <!-- ℹ️ Başlık ve Alt Başlık -->
+
         <h1 class="text-h4 q-mt-md">{{ t("about.title") }}</h1>
-        <p class="text-subtitle1 text-grey">{{ t("about.subtitle") }}</p>
+        <p class="text-subtitle1 text-white">{{ t("about.subtitle") }}</p>
       </q-card-section>
 
-      <q-separator />
-
       <!-- Şirket Bilgisi -->
-      <q-card-section class="content-section">
+      <q-card-section class="content-section" v-if="isCompanyTitleValid">
         <q-icon name="business" color="primary" size="30px" />
-        <h3 class="text-h6">{{ t("about.companyTitle") }}</h3>
-        <p class="text-body1">{{ t("about.companyDesc") }}</p>
+        <h3 class="text-h6">{{ companyTitle }}</h3>
+        <p
+          class="text-body1"
+          v-if="t('about.companyDesc') !== 'about.companyDesc'"
+        >
+          {{ t("about.companyDesc") }}
+        </p>
       </q-card-section>
 
       <q-separator />
@@ -53,14 +64,27 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { loadTranslations } from "src/boot/i18n";
 
 const { t, locale } = useI18n();
 
+const isTranslationsLoaded = ref(false);
+
 onMounted(async () => {
   await loadTranslations(locale.value);
+  isTranslationsLoaded.value = true;
+});
+
+const companyTitle = computed(() => t("about.companyTitle"));
+const isCompanyTitleValid = computed(() => {
+  const val = companyTitle.value;
+  return (
+    isTranslationsLoaded.value &&
+    val !== "about.companyTitle" &&
+    val.trim().length > 0
+  );
 });
 </script>
 

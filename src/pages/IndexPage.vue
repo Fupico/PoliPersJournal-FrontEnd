@@ -58,19 +58,17 @@ const autoplay = ref(true);
 const slideList = ref([
   {
     name: 1,
-    image: "/images/slider1.png",
-    title: "Parti Aidiyeti",
-    description: `"Parti Aidiyeti" makalesi, parti aidiyetinin bireysel ideolojiler üzerindeki
-        etkilerini incelemektedir. Bireylerin sosyal kimliklerini oluştururken, grup aidiyetleri
-        ve siyasi tercihlerinin önemli bir rol oynadığı gözlemlenmektedir.`,
+    image: "/images/slider7.png",
+    title: "2025 ALMANYA SEÇİM SONUÇLARI DETAYLI DEĞERLENDİRMESİ",
+    description: `"Almanya 2025 yılında tarihinde görülmemiş bir seçimi geride bıraktı. Yalnızca hükümet değişime değil, kültürel ve tarihsel anlamda da yapısal köklü değişikliklere sebep olan son seçimlerin sonuçlarını tüm detaylarıyla inceliyoruz.
+
+`,
   },
   {
     name: 2,
-    image: "/images/slider6.png",
-    title: "Konu Kapanmadı Podcastimiz Spotify'da",
-    description: `"Konu Kapanmadı", üniversite öğrencilerinin kendi öğrenme süreçlerinden aldıkları
-        ilhamla, gündemden kült konulara, kalıplaşmış yargılardan toplumsal meselelere kadar her şeyi
-        kendi tarzlarında ve samimi dilleri ile tartıştığı bir alan.`,
+    image: "/images/slider8.jpg",
+    title: "Almanya Enerji Dönüşüm Süreci",
+    description: `"1970’lerden günümüze kadar olan 55 yıllık bu süreçte Almanya sürdürülebilir enerji ve yeşile dönüş projeleri kapsamında öncü dünya ülkelerinden biri olmuştur. Yenilenebilir enerji dönüşümü kapsamında 1970’lerdeki enerji krizinden doğru şekilde ders çıkararak geleceğin en önemli alanlarından biri olan “yenilenebilir enerji” kaynaklarına sürekli olarak yatırımlarını arttırmıştır. `,
   },
 ]);
 // 🌐 Dil bazlı article verileri
