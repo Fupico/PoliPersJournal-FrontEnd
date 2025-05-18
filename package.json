@@ -1,9 +1,9 @@
 {
-  "name": "polipersjournal",
+  "name": "Poli Pers Journal",
   "version": "0.0.1",
   "description": "Poli Pers Journal",
   "productName": "PoliPersJournal",
-  "author": "devrimmehmet <devrimmehmet@gmail.com>",
+  "author": "FuPiCo",
   "type": "module",
   "private": true,
   "scripts": {
