@@ -25,14 +25,14 @@
         />
       </q-toolbar>
 
-      <q-bar class="bg-white text-dark nav-bar">
+      <!-- <q-bar class="text-dark nav-bar header-bg">
         <div class="row justify-between items-center full-width">
           <div class="breadcrumbs-container">
             <div class="breadcrumbs">
-              <router-link to="/" class="text-primary">Home</router-link>
+              <router-link to="/" class="text-grey-5">Home</router-link>
               <span v-for="(crumb, index) in displayedBreadcrumbs" :key="index">
                 <span class="text-grey-7"> > </span>
-                <router-link :to="crumb.link" class="text-primary">
+                <router-link :to="crumb.link" class="text-grey-2">
                   {{ crumb.label }}
                 </router-link>
               </span>
@@ -56,6 +56,41 @@
             </template>
           </div>
         </div>
+      </q-bar> -->
+      <q-bar dark class="header-bg text-white breadcrumb-bar">
+        <q-btn dense flat round icon="lens" size="8.5px" color="green" />
+        <div style="font-size: 14px" class="">
+          <router-link to="/" class="text-grey-5">Home</router-link>
+          <span v-for="(crumb, index) in displayedBreadcrumbs" :key="index">
+            <span class="text-grey-7"> > </span>
+            <router-link :to="crumb.link" class="text-grey-2">
+              {{ crumb.label }}
+            </router-link>
+          </span>
+        </div>
+        <q-space />
+        <!-- <div class="col text-center text-weight-bold">My-App</div> -->
+        <q-btn class="q-mr-xs" flat icon="language" size="15px" color="green">
+          <q-menu>
+            <q-list
+              dense
+              style="min-width: 100px"
+              v-for="(lang, index) in languages"
+              :key="lang.code"
+            >
+              <q-item
+                :class="{ 'text-primary': locale === lang.code }"
+                clickable
+                @click="changeLanguage(lang.code)"
+                v-close-popup
+              >
+                <q-item-section>{{ lang.name }}</q-item-section>
+              </q-item>
+
+              <q-separator />
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-bar>
     </q-header>
 
@@ -245,6 +280,10 @@ a {
   padding: 3px;
   color: white;
 }
+/* .active-lang {
+  background-color: #122ece;
+  color: white;
+} */
 
 .lang-separator {
   color: #ccc;
@@ -334,6 +373,10 @@ html {
   font-weight: 500;
 }
 
+.breadcrumb-bar {
+  /* margin-bottom:10px;  */
+  margin-left: 20px;
+}
 /* Mobil Uyumluluk */
 @media (max-width: 768px) {
   .nav-bar {
@@ -375,6 +418,11 @@ html {
   .footer-bg {
     padding-top: 1px;
     width: 100%;
+  }
+
+  .breadcrumb-bar {
+    margin-bottom: 10px;
+    margin-left: 20px;
   }
 }
 </style>
