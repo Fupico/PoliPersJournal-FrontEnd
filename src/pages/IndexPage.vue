@@ -32,12 +32,74 @@
           </q-carousel-slide>
         </q-carousel>
       </div>
-      <div class="col-12 col-md-8">
-        <LatestArticles :articles="articles" />
+      <div class="col-12 col-md-9">
+        <!-- <LatestArticles :articles="articles" /> -->
+        <q-markup-table flat bordered>
+          <thead>
+            <tr
+              style="
+                background: linear-gradient(135deg, #e3f2fd, #bbdefb, #90caf9);
+              "
+            >
+              <th class="text-left">#</th>
+              <th class="text-left">Kapak</th>
+              <th class="text-left" style="min-width: 250px">Başlık</th>
+              <th class="text-left">Kategori</th>
+              <th class="text-left">Yazar</th>
+              <th class="text-left">Tarih</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(article, index) in articles" :key="article.id">
+              <td>{{ index + 1 }}</td>
+              <td>
+                <q-img
+                  :src="article.coverImageUrl"
+                  :alt="article.title"
+                  style="width: 60px; height: 40px; object-fit: cover"
+                  spinner-color="primary"
+                >
+                  <q-tooltip
+                    anchor="center right"
+                    self="center left"
+                    class="bg-white text-black shadow-2"
+                    style="width: 200px; padding: 0"
+                  >
+                    <img
+                      v-show="$q.screen.gt.xs"
+                      :src="article.coverImageUrl"
+                      :alt="article.title"
+                      style="width: 200px; height: auto; object-fit: cover"
+                    />
+                  </q-tooltip>
+                </q-img>
+              </td>
+              <td
+                style="
+                  width: 250px; /* ya da max-width: 250px; */
+                  white-space: normal;
+                  word-break: break-word;
+                "
+                class="word-wrap-lg text-primary"
+              >
+                <span
+                  class="cursor-pointer"
+                  @click="router.push(`/posts/${article.slug}`)"
+                >
+                  {{ article.title }}</span
+                >
+              </td>
+              <td>{{ article.category }}</td>
+              <td>{{ article.authors.join(", ") }}</td>
+              <td>{{ formatDate(article.date) }}</td>
+            </tr>
+          </tbody>
+        </q-markup-table>
       </div>
 
       <!-- 🗂️ Kategori Listesi (sol panel) -->
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-3">
+        <LatestArticles :articles="articles" />
         <CategoryList />
       </div>
     </div>
@@ -45,12 +107,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
+import { useQuasar } from "quasar";
 import LatestArticles from "src/components/LatestArticles.vue";
 import CategoryList from "src/components/CategoryList.vue";
 import { useI18n } from "vue-i18n";
 
 const { t, locale, messages } = useI18n();
+import { fetchLatestArticles, LatestArticleDto } from "@/stores/articleService";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const $q = useQuasar();
+const articles = ref<LatestArticleDto[]>([]);
+const loadArticles = async () => {
+  try {
+    articles.value = await fetchLatestArticles(locale.value);
+  } catch (err) {
+    console.error("Makale verileri çekilemedi", err);
+    articles.value = [];
+  }
+};
+
+onMounted(loadArticles);
 
 //Slider
 const slide = ref(1);
@@ -72,13 +151,23 @@ const slideList = ref([
   },
 ]);
 // 🌐 Dil bazlı article verileri
-const articles = computed(() => {
-  const currentLocale = locale.value;
-  const data = messages.value[currentLocale]?.articles;
-  if (Array.isArray(data)) return data;
-  console.error("Articles key is not an array or undefined:", data);
-  return [];
-});
+// const articles = computed(() => {
+//   const currentLocale = locale.value;
+//   const data = messages.value[currentLocale]?.articles;
+//   if (Array.isArray(data)) return data;
+//   console.error("Articles key is not an array or undefined:", data);
+//   return [];
+// });
+
+// Tarihi düzgün formatlamak için
+function formatDate(dateStr: any) {
+  const options = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  } as const;
+  return new Date(dateStr).toLocaleDateString("tr-TR", options);
+}
 </script>
 
 <style scoped>
