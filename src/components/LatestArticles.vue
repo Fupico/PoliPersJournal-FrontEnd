@@ -1,16 +1,21 @@
 <template>
   <div class="bordered-container">
     <div class="row items-center justify-between q-mb-md">
-      <p class="text-h5 font-bold left-aligned-underline">
+      <!-- <p class="text-h5 font-bold left-aligned-underline">
         {{ t("article.latestArticles") }}
-      </p>
-      <q-btn
+      </p> -->
+      <div class="section-header">
+        <q-icon name="article" color="primary" size="24px" class="q-mr-sm" />
+        <p class="q-ma-none">{{ t("article.latestArticles") }}</p>
+      </div>
+
+      <!-- <q-btn
         flat
         to="/categories"
         class="text-body1 q-pa-sm rounded bordered-button"
       >
         {{ t("article.viewAll") }}
-      </q-btn>
+      </q-btn> -->
     </div>
 
     <q-separator inset />
@@ -23,23 +28,23 @@
     <!-- 📄 Makale Listesi -->
     <div v-else class="row q-col-gutter-md">
       <div
-        v-for="article in paginatedArticles"
+        v-for="article in paginatedArticles.slice(0, 3)"
         :key="article.slug"
-        class="col-12 col-sm-6 col-md-4 col-lg-3"
+        class="col-12"
       >
         <q-card
           bordered
-          class="q-mb-md rounded-borders cursor-pointer"
+          class="q-pa-none rounded-borders cursor-pointer latest-article-card"
           @click="router.push(`/posts/${article.slug}`)"
         >
-          <q-img :src="article.coverImageUrl" ratio="16:9" />
+          <!-- <q-img :src="article.coverImageUrl" ratio="16:9" /> -->
 
-          <q-card-section>
-            <div class="text-caption text-primary font-medium">
+          <q-card-section class="q-pa-none">
+            <div class="text-caption text-primary">
               {{ article.category || t("article.uncategorized") }}
             </div>
 
-            <div class="text-body1 text-bold q-mb-xs ellipsis-2-lines">
+            <div class="text-body2 text-bold ellipsis-2-lines">
               {{ article.title }}
             </div>
 
@@ -47,9 +52,7 @@
               {{ article.summary }}
             </div>
 
-            <div class="text-caption text-grey-6 q-mt-sm">
-              📅 {{ article.date }}
-            </div>
+            <div class="text-caption text-grey-6">📅 {{ article.date }}</div>
           </q-card-section>
         </q-card>
       </div>
@@ -124,8 +127,10 @@ const paginatedArticles = computed(() => {
   border: 1px solid rgba(211, 211, 211, 0.6);
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb, #90caf9);
+  transition: box-shadow 0.3s ease;
 }
 .ellipsis {
   overflow: hidden;
@@ -144,5 +149,27 @@ const paginatedArticles = computed(() => {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+.latest-article-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e3f2fd
+  ); /* beyazdan açığa mavi */
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.latest-article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1976d2;
 }
 </style>

@@ -8,11 +8,13 @@
           flat
           bordered
           class="author-card q-pa-md row items-center no-wrap"
+          align="center"
         >
-          <div v-if="author.avatar" class="col-auto avatar-section">
+          <div v-if="author.avatar" class="col-12 avatar-section">
             <div class="avatar-background">
               <q-avatar size="100px" class="avatar-border">
                 <img
+                  style="object-fit: cover"
                   :src="author.avatar"
                   alt="Yazar"
                   @error="onImageError($event)"
@@ -21,22 +23,28 @@
             </div>
           </div>
 
-          <div class="col q-ml-lg">
-            <q-badge color="blue-1" text-color="blue-10" class="q-mb-sm">
+          <div class="col-12">
+            <q-badge color="blue-1" text-color="blue-10" class="q-my-sm">
               <q-icon name="verified" class="q-mr-xs" />
               {{ t("article.authorRole") }}
             </q-badge>
-
-            <!-- ✅ Yönlendirme slug üzerinden -->
-            <RouterLink
+          </div>
+          <!-- ✅ Yönlendirme slug üzerinden -->
+          <div class="col-12">
+            <!-- <RouterLink
               :to="`/author/${author.profileLink}`"
               class="text-primary no-decoration"
             >
               <div class="text-h6 text-weight-bold hover-underline">
                 {{ author.name }}
               </div>
-            </RouterLink>
+            </RouterLink> -->
+            <div class="text-h6 text-primary text-weight-bold hover-underline">
+              {{ author.name }}
+            </div>
+          </div>
 
+          <div class="col-12">
             <q-badge
               v-if="author.university"
               color="grey-2"
@@ -46,14 +54,11 @@
               <q-icon name="school" size="xs" class="q-mr-xs" />
               {{ author.university }}
             </q-badge>
+          </div>
 
-            <div
-              v-if="author.bio"
-              class="author-bio text-italic text-grey-9 q-mt-sm"
-            >
-              <q-icon name="format_quote" size="xs" class="q-mr-xs" />
-              {{ author.bio }}
-            </div>
+          <div v-if="author.bio" class="col-12 text-italic text-grey-9 q-mt-sm">
+            <q-icon name="format_quote" size="xs" class="q-mr-xs" />
+            {{ author.bio }}
           </div>
         </q-card>
       </div>
@@ -121,20 +126,6 @@ watch(() => locale.value, fetchAuthors);
 }
 .avatar-border:hover {
   transform: scale(1.05);
-}
-
-.avatar-background {
-  padding: 8px;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  border-radius: 50%;
-}
-
-.avatar-section {
-  flex-shrink: 0; /* ✅ resim alanı sabit kalsın */
-}
-
-.author-card .col {
-  min-width: 0; /* ✅ metinler taşmasın */
 }
 
 .text-h6,
